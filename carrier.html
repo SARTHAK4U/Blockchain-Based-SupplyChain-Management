@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+    <!-- Blockchain -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.2.6/dist/web3.min.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+    <script type="text/javascript" src="carrier.js"></script>
+
+    <title>Goods Trade</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"> Goods Trade | Carrier </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                <div class="d-flex">
+                    <a href="/seller.html">
+                        <button class="btn btn-outline-light">Supplier</button>
+                    </a>
+                    <a href="/index.html">
+                        <button class="btn btn-outline-light">Shipper</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- main layout -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-8">
+                <h2>Product(s) <span class="badge rounded-pill bg-dark" id="_products_table"></span></h2>
+
+                <table class="table" id="_order_table">
+                    <thead>
+                        <tr>
+
+                            <!-- int id;
+                            int product_id;
+                            int quantity;
+                            string customer_name;
+                            string status;
+                            string delivery_address;
+                            address customer_address;
+                            address carrier_address; -->
+
+
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Product Id</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Delivery Address</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
+             
+                <div>
+                    <h4>Update Status</h4>
+                    <div id="update_carrier"></div>
+                </div>
+               <hr/>
+              
+                <div>
+                    <h4>Payment Section</h4>
+                    <div id="amounts"></div>
+                    <div id="payments"></div>
+                </div>
+                <hr/>
+
+
+
+                <div>
+                    <h4>Payment Pending</h4>
+                    <table class="table" id="_order_table1">
+                        <thead>
+                            <tr>
+                
+                                <th scope="col">Order ID</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col"></th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+                
+
+            </div>
+           
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+    -->
+    
+    <div>
+        &nbsp;
+    </div>
+
+</body>
+
+</html>
+
+

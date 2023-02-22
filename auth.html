@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Auth</title>
+    <style>
+        #display-image{
+  width: 400px;
+  height: 225px;
+  border: 1px solid black;
+  background-position: center;
+  background-size: cover;
+  margin: auto;
+  border-style: groove;
+  border-color: greenyellow;
+  border-width: 3px;
+}
+   #title
+   {
+     display: flex;
+     text-align: center;
+     border: 2px;
+     font-weight: bold;
+     font-size: 40px;
+     align-content: center;
+     justify-content: center;
+     border-style: groove;
+     border-color: brown;
+     background-color: rgb(168, 212, 230);
+     color: black;
+     width: 20%;
+     margin: auto;
+     margin-bottom: 4%;
+   }
+
+   #image-input
+   {
+    margin: auto;
+    text-align: center;
+    margin-left: 40%;
+    margin-top: 1%;
+   }
+
+   #box{
+    display: flex;
+    text-align: center;
+    border: 2px;
+    font-weight: bold;
+    font-size: 20px;
+    border-style: groove;
+    flex-direction: column;
+    margin: auto;
+    border-color: burlywood;
+    padding: 10px;
+    width: 45%;
+   }
+   
+
+    </style>
+ <script src="https://code.jquery.com/jquery-3.4.1.js"
+     integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.2.6/dist/web3.min.js"></script>
+ <script type="text/javascript" src="common.js"></script>
+ <script type="text/javascript" src="auth.js"></script>
+</head>
+<body>
+    <div id ="title">Authentication</div>
+    <div id="box">
+    <div> Upload Your Key</div>
+    <div id="display-image"></div>
+    <input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg">
+   </div>
+    
+
+<script>
+    const getBase64StringFromDataURL = (dataURL) =>dataURL.replace('data:', '').replace(/^.+,/, '');
+    const image_input = document.querySelector("#image-input");
+image_input.addEventListener("change", function() {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => {
+    const uploaded_image = reader.result;
+    document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+    const base64 = getBase64StringFromDataURL(reader.result);
+    // console.log(base64);
+    const messageHash = web3.utils.sha3(base64);
+    // console.log(messageHash)
+    onInit(messageHash);
+  });
+  reader.readAsDataURL(this.files[0]);
+
+  const image = document.getElementById('image_input');
+
+  async function onInit(messageHash) {
+        await window.ethereum.enable();
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const account = accounts[0];
+        // console.log(account)
+        const signature =  web3.eth.personal.sign(messageHash, account);
+        signature.then(function(result){
+            console.log('Signature: ',result)
+            authenticate(account,result)
+        });
+
+    }
+
+    
+  
+});
+</script>
+
+</body>
+</html>
